@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +42,11 @@ Route::get('our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('my-account', [HomeController::class, 'myAccount'])->name('my-account');
 Route::get('wish-list', [HomeController::class, 'wishList'])->name('wish-list');
 Route::get('check-out', [HomeController::class, 'checkOut'])->name('check-out');
+
+Route::group(['prefix' => 'admin'], function(){
+  Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+  Route::resources([
+    'product' => ProductController::class,
+    'category' => CategoryController::class
+  ]);
+});
