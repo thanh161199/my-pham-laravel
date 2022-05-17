@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Providers;
-
-// use Illuminate\Contracts\Pagination\Paginator;
-
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +25,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+        view()->composer('*',function($view)
+        {
+            // $cats = Category::orderBy('name', 'ASC')->get();
+            // $view->with(compact('cats'));\
+            $totalQuantity = 0;
+            $totalPrice = 0;
+            $cats  = Category::orderBy('name','ASC')->get();
+            $carts = session('cart') ? session('cart') : [];
+            foreach ($carts as $key => $cart) {
+                $totalQuantity += $cart->quantity;
+                $totalPrice += $cart->quantity * $cart->price;;
+            }
+            $view->with(compact('cats','carts','totalQuantity','totalPrice'));
+
+        });
+
     }
 }

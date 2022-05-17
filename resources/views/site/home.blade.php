@@ -2,7 +2,6 @@
 @section('title', 'Home page')
 @section('main')
 
-
 <!--code content-homepage-->
 <div class="content-homepage">
     <!-- slide-homepage-1-->
@@ -54,23 +53,28 @@
             </div>
             <div class="control-slide-homepage">
                 <ul class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"><p>1</p></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"><p>2</p></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"><p>3</p></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                        <p>1</p>
+                    </li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                        <p>2</p>
+                    </li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2">
+                        <p>3</p>
+                    </li>
                 </ul>
 
             </div>
         </div>
-
     </div>
     <!--end slide-homepage-1-->
     <!--Product out-->
     <div class="container">
-        <div class="row content-homepage-home3" >
+        <div class="row content-homepage-home3">
             <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12  layer-content-homepage">
                 <img src="{{url('file')}}/imager/product/beauty-homepage-v3.jpg" alt="">
             </div>
-            <div class=" col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="product-out">
                     <div class="title">
                         <h2 class="text-center">Beauty</h2>
@@ -78,20 +82,22 @@
                     <div id="demo-slide1" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
-                            <li data-target="#demo-slide1" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo-slide1" data-slide-to="1"></li>
-                            <li data-target="#demo-slide1" data-slide-to="2"></li>
+                        @foreach($product_new as $key1 => $prods)
+                            <li data-target="#demo-slide1" data-slide-to="{{$key1}}" class=" {{$key1 == 0 ? 'active' :'' }}"></li>
+                          @endforeach
                         </ul>
                         <!-- The slideshow -->
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                        @foreach($product_new as $key => $prods)
+                            <div class="carousel-item {{$key == 0 ? 'active' :'' }}">
                                 <div class="row product">
+                                    @foreach($prods as  $pn)
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover" src="{{ url('uploads') }}/{{$pn->image}}"
+                                                        alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -99,8 +105,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -111,453 +116,30 @@
                                             <div class="card-body">
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        href="{{route('home.product-single',$pn->id)}}">{{$pn->name}}</a>
+                                                </p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Spa</a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Night cream</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span
+                                                                class="woocommerce-Price-currencySymbol">$</span>{{$pn->price}}
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Make up </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Perfect Spice</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row product">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onnew">New</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Beauty </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Cleanser layde</a></p>
-                                                <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Spa</a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Night cream</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Make up </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Perfect Spice</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row product">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onnew">New</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Beauty </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Cleanser layde</a></p>
-                                                <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Spa</a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Night cream</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Make up </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Perfect Spice</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content container">
-                                <div class="product-single-quick-view">
-                                    <div class="row product_detail">
-                                        <div class="col-md-6 col-sm-12 col-12">
-                                            <div class="flex-quick-view">
-                                                <div id="flex-slider" class="flexslider">
-                                                    <ul class="slides">
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail.jpg" alt="">
-                                                        </li>
-                                                        <!-- items mirrored twice, total of 12 -->
-                                                    </ul>
-                                                </div>
-                                                <div id="flex-carousel" class="flexslider">
-                                                    <ul class="slides">
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail1.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail2.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail3.jpg" alt="">
-                                                        </li>
-                                                        <li>
-                                                            <img src="{{url('file')}}/imager/product-detail/product_detail4.jpg" alt="">
-                                                        </li>
-                                                        <!-- items mirrored twice, total of 12 -->
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 col-12 content-product">
-                                            <h2>Whitening cream | $65</h2>
-                                            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                    class="fas fa-star"></i><i class="fas fa-star"></i> &nbsp; (2 customer
-                                                review)</p>
-                                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                                when an
-                                                unknown printer took a galley of type and scrambled it to make a type specimen
-                                                book.
-                                                It has survived not only five centuries, but also the leap into electronic </p>
-                                            <div class="infor-product">
-                                                <p><span>Sku: </span>22</p>
-                                                <p><span>Category: </span>Cosmetic</p>
-                                                <p><span>Tag: </span>Trendy</p>
-                                                <p><span>Share: </span>
-                                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a></p>
-                                            </div>
-                                            <div>
-                                                <div class="btn-group">
-                                                    <button type="button" class="prev btn ">-</button>
-                                                    <button type="button" class="show-number btn ">1</button>
-                                                    <button type="button" class="next btn ">+</button>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <a href="#" class="btn add-to-cart">ADD TO CART<p><i
-                                                            class="fas fa-cart-plus"></i></p> </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <span class="lnr lnr-cross close-quick-view" data-dismiss="modal"></span>
-                                </div>
-                            </div>
+                            
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!--banner - product-->
@@ -585,12 +167,13 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row product">
+                                    @foreach($product_sale as $pn)
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -598,8 +181,95 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
+                                                        <span class="lnr lnr-magnifier"></span>
+                                                    </button>
+                                                    <button class="btn">
+                                                        <span class="lnr lnr-heart"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-title"><a href="product-list.html">Beauty </a></p>
+                                                <p class="woocommerce-loop-product__title"><a
+                                                        href="product-single.html">{{$pn->name}}</a></p>
+                                                <span class="price">
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>
+                                                            {{$pn->price}}
+                                                        </span>
+                                                    </ins>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    @foreach ($product_sale as $ps)
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-img-top">
+                                                <a href="#" class="wp-post-image">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
+                                                </a>
+                                                <p class="onsale">Sale</p>
+                                                <div class="icon-product">
+                                                    <button class="btn">
+                                                        <span class="lnr lnr-lock"></span>
+                                                    </button>
+                                                    <button type="button" class="btn click-quick-view"
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
+                                                        <span class="lnr lnr-magnifier"></span>
+                                                    </button>
+                                                    <button class="btn">
+                                                        <span class="lnr lnr-heart"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-title"><a href="product-list.html">Spa</a></p>
+                                                <p class="woocommerce-loop-product__title"><a
+                                                        href="product-single.html">{{$ps->name}}</a></p>
+
+                                                <span class="price">
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span
+                                                                class="woocommerce-Price-currencySymbol">$</span>{{$ps->price}}
+
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span
+                                                                class="woocommerce-Price-currencySymbol">$</span>{{$ps->sale_price}}
+                                                        </span>
+                                                    </ins>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row product">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div class="card">
+                                            <div class="card-img-top">
+                                                <a href="#" class="wp-post-image">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
+                                                </a>
+                                                <p class="onnew">New</p>
+                                                <div class="icon-product">
+                                                    <button class="btn">
+                                                        <span class="lnr lnr-lock"></span>
+                                                    </button>
+                                                    <button type="button" class="btn click-quick-view"
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -611,14 +281,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        Cleanser layde</a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
 
@@ -627,8 +297,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -636,8 +306,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -649,21 +318,21 @@
                                                 <p class="card-title"><a href="product-list.html">Spa</a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Night cream</a></p>
+                                                        Night cream</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>45
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>38
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -671,8 +340,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product5.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -680,8 +349,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -693,21 +361,21 @@
                                                 <p class="card-title"><a href="product-list.html">Make up </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Perfect Spice</a></p>
+                                                        Perfect Spice</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -719,8 +387,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -728,8 +396,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -741,14 +408,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        Cleanser layde</a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
 
@@ -757,8 +424,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -766,8 +433,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -779,21 +445,21 @@
                                                 <p class="card-title"><a href="product-list.html">Spa</a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Night cream</a></p>
+                                                        Night cream</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>45
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>38
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -801,8 +467,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product5.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -810,8 +476,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -823,156 +488,118 @@
                                                 <p class="card-title"><a href="product-list.html">Make up </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Perfect Spice</a></p>
+                                                        Perfect Spice</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row product">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onnew">New</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Beauty </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Cleanser layde</a></p>
-                                                <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content container">
+                        <div class="product-single-quick-view">
+                            <div class="row product_detail">
+                                <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="flex-quick-view">
+                                        <div id="flex-slider" class="flexslider">
+                                            <ul class="slides">
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
+                                                        alt="">
+                                                </li>
+                                                <!-- items mirrored twice, total of 12 -->
+                                            </ul>
                                         </div>
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Spa</a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Night cream</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
+                                        <div id="flex-carousel" class="flexslider">
+                                            <ul class="slides">
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail1.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail2.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail3.jpg"
+                                                        alt="">
+                                                </li>
+                                                <li>
+                                                    <img src="{{url('file')}}/imager/product-detail/product_detail4.jpg"
+                                                        alt="">
+                                                </li>
+                                                <!-- items mirrored twice, total of 12 -->
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div class="card">
-                                            <div class="card-img-top">
-                                                <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
-                                                </a>
-                                                <p class="onsale">Sale</p>
-                                                <div class="icon-product">
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-lock"></span>
-                                                    </button>
-                                                    <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
-                                                        <span class="lnr lnr-magnifier"></span>
-                                                    </button>
-                                                    <button class="btn">
-                                                        <span class="lnr lnr-heart"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-title"><a href="product-list.html">Make up </a></p>
-                                                <p class="woocommerce-loop-product__title"><a
-                                                        href="product-single.html">
-                                                    Perfect Spice</a></p>
-
-                                                <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
-
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
-                                            </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-12 content-product">
+                                    <h2>Whitening cream | $65</h2>
+                                    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i> &nbsp; (2 customer
+                                        review)</p>
+                                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an
+                                        unknown printer took a galley of type and scrambled it to make a type
+                                        specimen
+                                        book.
+                                        It has survived not only five centuries, but also the leap into electronic
+                                    </p>
+                                    <div class="infor-product">
+                                        <p><span>Sku: </span>22</p>
+                                        <p><span>Category: </span>Cosmetic</p>
+                                        <p><span>Tag: </span>Trendy</p>
+                                        <p><span>Share: </span>
+                                            <a href="#"><i class="fab fa-facebook"></i></a>
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="btn-group">
+                                            <button type="button" class="prev btn ">-</button>
+                                            <button type="button" class="show-number btn ">1</button>
+                                            <button type="button" class="next btn ">+</button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn add-to-cart">ADD TO CART<p><i
+                                                        class="fas fa-cart-plus"></i></p> </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <span class="lnr lnr-cross close-quick-view" data-dismiss="modal"></span>
                         </div>
                     </div>
                 </div>
@@ -1014,8 +641,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -1023,8 +650,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1036,14 +662,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        Cleanser layde</a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
 
@@ -1052,8 +678,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1061,8 +687,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1074,21 +699,21 @@
                                                 <p class="card-title"><a href="product-list.html">Spa</a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Night cream</a></p>
+                                                        Night cream</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>45
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>38
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1096,8 +721,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product5.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1105,8 +730,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1118,21 +742,21 @@
                                                 <p class="card-title"><a href="product-list.html">Make up </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Perfect Spice</a></p>
+                                                        Perfect Spice</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1144,8 +768,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -1153,8 +777,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1166,14 +789,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        Cleanser layde</a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
 
@@ -1182,8 +805,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1191,8 +814,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1204,21 +826,21 @@
                                                 <p class="card-title"><a href="product-list.html">Spa</a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Night cream</a></p>
+                                                        Night cream</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>45
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>38
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1226,8 +848,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product5.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1235,8 +857,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1248,21 +869,21 @@
                                                 <p class="card-title"><a href="product-list.html">Make up </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Perfect Spice</a></p>
+                                                        Perfect Spice</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1274,8 +895,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product.jpg" alt="product">
                                                 </a>
                                                 <p class="onnew">New</p>
                                                 <div class="icon-product">
@@ -1283,8 +904,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1296,14 +916,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Cleanser layde</a></p>
+                                                        Cleanser layde</a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
 
@@ -1312,8 +932,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product2.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product2.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1321,8 +941,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1334,21 +953,21 @@
                                                 <p class="card-title"><a href="product-list.html">Spa</a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Night cream</a></p>
+                                                        Night cream</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>45
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>45
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>38
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>38
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1356,8 +975,8 @@
                                         <div class="card">
                                             <div class="card-img-top">
                                                 <a href="#" class="wp-post-image">
-                                                    <img class="image-cover" src="{{url('file')}}/imager/product/product5.jpg"
-                                                         alt="product">
+                                                    <img class="image-cover"
+                                                        src="{{url('file')}}/imager/product/product5.jpg" alt="product">
                                                 </a>
                                                 <p class="onsale">Sale</p>
                                                 <div class="icon-product">
@@ -1365,8 +984,7 @@
                                                         <span class="lnr lnr-lock"></span>
                                                     </button>
                                                     <button type="button" class="btn click-quick-view"
-                                                            data-toggle="modal"
-                                                            data-target="#exampleModalCenter">
+                                                        data-toggle="modal" data-target="#exampleModalCenter">
                                                         <span class="lnr lnr-magnifier"></span>
                                                     </button>
                                                     <button class="btn">
@@ -1378,21 +996,21 @@
                                                 <p class="card-title"><a href="product-list.html">Make up </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Perfect Spice</a></p>
+                                                        Perfect Spice</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1420,10 +1038,11 @@
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-1.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-1.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html"> Sed ut perspiciatis
-                                                unde</a></h5>
+                                                    unde</a></h5>
 
                                             <p class="card-text">But I must explain to you how all this mistaken idea of
                                                 denouncing pleasure and praising pain was born and I will give you.</p>
@@ -1442,7 +1061,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-2.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-2.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">Et harum quidem rerum</a>
                                             </h5>
@@ -1464,7 +1084,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-3.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-3.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">Temporibus autem quib</a>
                                             </h5>
@@ -1489,7 +1110,8 @@
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-7.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-7.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">The standard chunk</a>
                                             </h5>
@@ -1510,7 +1132,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-8.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-8.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">Excepteur sint occae</a>
                                             </h5>
@@ -1531,7 +1154,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-9.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-9.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">Nemo enim ipsam</a></h5>
                                             <p class="card-text">Neque porro quisquam est, qui dolorem ipsum quia dolor
@@ -1555,10 +1179,11 @@
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-4.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-4.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">There are many
-                                                variations</a></h5>
+                                                    variations</a></h5>
                                             <p class="card-text">If you are going to use a passage of Lorem Ipsum, you
                                                 need to be sure there isn't anything embarrassing hidden.</p>
                                         </div>
@@ -1576,7 +1201,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-5.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-5.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">All the Lorem Ipsum</a>
                                             </h5>
@@ -1597,7 +1223,8 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                                     <div class="card">
-                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-6.jpg" class="card-img-top" alt="...">
+                                        <img src="{{url('file')}}/imager/blog/Blog_Masonry-6.jpg" class="card-img-top"
+                                            alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a href="blog-single.html">Contrary to popular</a>
                                             </h5>
@@ -1636,14 +1263,14 @@
                         <div class="float-right btn-group">
                             <div class="btn-left">
                                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                   data-slide="prev">
+                                    data-slide="prev">
                                     <span class="lnr lnr-chevron-left"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                             </div>
                             <div class="btn-right">
                                 <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                   data-slide="next">
+                                    data-slide="next">
                                     <span class="lnr lnr-chevron-right"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -1657,8 +1284,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best1.jpg"
+                                                    alt="product">
                                             </a>
                                             <p class="onsale">Sale</p>
                                         </div>
@@ -1667,23 +1295,24 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Nutritional herbs</a></p>
+                                                        Nutritional herbs</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
-                                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                                                    <p>But I must explain to you how all this mistaken idea of
+                                                        denouncing pleasure.</p>
                                                 </div>
                                                 <button>ADD TO CARD</button>
                                                 <button><span class="lnr lnr-heart"></span></button>
@@ -1695,8 +1324,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best2.jpg"
+                                                    alt="product">
                                             </a>
                                         </div>
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-12">
@@ -1704,15 +1334,15 @@
                                                 <p class="card-title"><a href="product-list.html">Makeup </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Against aging</a></p>
+                                                        Against aging</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>On the other hand, we denounce with righteous indignation and
                                                         dislike
@@ -1731,8 +1361,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best1.jpg"
+                                                    alt="product">
                                             </a>
                                             <p class="onsale">Sale</p>
                                         </div>
@@ -1741,23 +1372,24 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Nutritional herbs</a></p>
+                                                        Nutritional herbs</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
-                                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                                                    <p>But I must explain to you how all this mistaken idea of
+                                                        denouncing pleasure.</p>
                                                 </div>
                                                 <button>ADD TO CARD</button>
                                                 <button><span class="lnr lnr-heart"></span></button>
@@ -1769,8 +1401,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best2.jpg"
+                                                    alt="product">
                                             </a>
                                         </div>
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-12">
@@ -1778,15 +1411,15 @@
                                                 <p class="card-title"><a href="product-list.html">Makeup </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Against aging</a></p>
+                                                        Against aging</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>On the other hand, we denounce with righteous indignation and
                                                         dislike
@@ -1804,8 +1437,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best1.jpg"
+                                                    alt="product">
                                             </a>
                                             <p class="onsale">Sale</p>
                                         </div>
@@ -1814,23 +1448,24 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Nutritional herbs</a></p>
+                                                        Nutritional herbs</a></p>
 
                                                 <span class="price">
-												<del>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>51
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>51
 
-													</span>
-												</del>
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>41
-													</span>
-												</ins>
-                                    </span>
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>41
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
-                                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                                                    <p>But I must explain to you how all this mistaken idea of
+                                                        denouncing pleasure.</p>
                                                 </div>
                                                 <button>ADD TO CARD</button>
                                                 <button><span class="lnr lnr-heart"></span></button>
@@ -1842,8 +1477,9 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/best2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/best2.jpg"
+                                                    alt="product">
                                             </a>
                                         </div>
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-12">
@@ -1851,15 +1487,15 @@
                                                 <p class="card-title"><a href="product-list.html">Makeup </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Against aging</a></p>
+                                                        Against aging</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>On the other hand, we denounce with righteous indignation and
                                                         dislike
@@ -1883,14 +1519,14 @@
                         <div class="float-right btn-group">
                             <div class="btn-left">
                                 <a class="carousel-control-prev" href="#carouselExampleControls1" role="button"
-                                   data-slide="prev">
+                                    data-slide="prev">
                                     <span class="lnr lnr-chevron-left"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
                             </div>
                             <div class="btn-right">
                                 <a class="carousel-control-next" href="#carouselExampleControls1" role="button"
-                                   data-slide="next">
+                                    data-slide="next">
                                     <span class="lnr lnr-chevron-right"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
@@ -1904,8 +1540,8 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new1.jpg" alt="product">
                                             </a>
                                         </div>
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-12">
@@ -1913,15 +1549,15 @@
                                                 <p class="card-title"><a href="product-list.html">Spa </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Baebody eye cream</a></p>
+                                                        Baebody eye cream</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Nor again is there anyone who loves or pursues or desires to
                                                         obtain pain.</p>
@@ -1936,8 +1572,8 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new2.jpg" alt="product">
                                             </a>
                                             <p class="onnew">New</p>
                                         </div>
@@ -1946,14 +1582,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Eye gel for dark </a></p>
+                                                        Eye gel for dark </a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                                                         accusantium.</p>
@@ -1971,8 +1607,8 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new1.jpg" alt="product">
                                             </a>
                                         </div>
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-12">
@@ -1980,15 +1616,15 @@
                                                 <p class="card-title"><a href="product-list.html">Spa </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Baebody eye cream</a></p>
+                                                        Baebody eye cream</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Nor again is there anyone who loves or pursues or desires to
                                                         obtain pain.</p>
@@ -2003,8 +1639,8 @@
                                     <div class="row no-gutters">
                                         <div class=" col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new2.jpg" alt="product">
                                             </a>
                                             <p class="onnew">New</p>
                                         </div>
@@ -2013,14 +1649,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Eye gel for dark </a></p>
+                                                        Eye gel for dark </a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                                                         accusantium.</p>
@@ -2038,8 +1674,8 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new1.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new1.jpg" alt="product">
                                             </a>
                                         </div>
                                         <div class=" col-lg-7 col-md-6 col-sm-6 col-12">
@@ -2047,15 +1683,15 @@
                                                 <p class="card-title"><a href="product-list.html">Spa </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Baebody eye cream</a></p>
+                                                        Baebody eye cream</a></p>
 
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Nor again is there anyone who loves or pursues or desires to
                                                         obtain pain.</p>
@@ -2070,8 +1706,8 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-12">
                                             <a href="product-single.html" class="wp-post-image">
-                                                <img class="image-cover" src="{{url('file')}}/imager/product-popular/new2.jpg"
-                                                     alt="product">
+                                                <img class="image-cover"
+                                                    src="{{url('file')}}/imager/product-popular/new2.jpg" alt="product">
                                             </a>
                                             <p class="onnew">New</p>
                                         </div>
@@ -2080,14 +1716,14 @@
                                                 <p class="card-title"><a href="product-list.html">Beauty </a></p>
                                                 <p class="woocommerce-loop-product__title"><a
                                                         href="product-single.html">
-                                                    Eye gel for dark </a></p>
+                                                        Eye gel for dark </a></p>
                                                 <span class="price">
-												<ins>
-													<span class="woocommerce-Price-amount amount">
-														<span class="woocommerce-Price-currencySymbol">$</span>79
-													</span>
-												</ins>
-                                    </span>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>79
+                                                        </span>
+                                                    </ins>
+                                                </span>
                                                 <div class="content-best-new">
                                                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                                                         accusantium.</p>

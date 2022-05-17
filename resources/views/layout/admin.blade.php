@@ -37,6 +37,25 @@
       <!-- Main content -->
       <section class="content">
         <div class="card-body">
+          @if (session()->has('yes'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{session()->get('yes')}}</strong> 
+          </div>
+          @endif
+          @if (session()->has('no'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{session()->get('no')}}</strong> 
+          </div>
+          @endif
+          <script>
+            $(".alert").alert();
+          </script>
           @yield('main')
         </div>
     </div>

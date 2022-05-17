@@ -8,13 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name','status'];
+
     public function scopeSearch($query)
     {
-        $search_val = request()->search;
-        if ($search_val) {
-            $query = $query->where('name', 'like', '%' . $search_val . '%');
+        $search_value = request()->search;
+        
+        if($search_value) {
+            $query = $query->where('name','LIKE','%'.$search_value.'%');
         }
+
+
         return $query;
+    }
+ 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

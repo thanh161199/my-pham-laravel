@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryEditRequest;
+
 
 class CategoryController extends Controller
 {
@@ -21,11 +24,11 @@ class CategoryController extends Controller
         return view('siteAdmin.category.create');
     }
 
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
         // dd($request->only('name', 'status'));
         Category::create($request->only('name', 'status'));
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Thêm mới thành công');
     }
 
     public function show($id)
@@ -39,16 +42,16 @@ class CategoryController extends Controller
         return view('siteAdmin.category.edit', compact('category'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryEditRequest $request, Category $category)
     {
         // dd($request->only('name','status'));
         $category->update($request->only('name', 'status'));
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Cập nhật thành công');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('yes','Xoá sản phẩm thành công');
     }
 }

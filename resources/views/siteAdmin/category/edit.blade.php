@@ -2,12 +2,14 @@
 @section('title', 'Sửa tên sản phẩm')
 @section('main')
 
-<form action="{{ route('category.update', $category->id) }}" method="post">
+<form action="{{ route('category.update', $category->id) }}" method="POST">
   @csrf @method('PUT')
   <div class="form-group">
     <label for="" class="form-label">Tên danh mục</label>
     <input type="text" class="form-control" name="name" value="{{ $category->name }}">
+    @error('name') {{$message}} @enderror
   </div>
+
 
   <div class="form-group">
     <p for="" class="form-label">Trạng thái</p>
