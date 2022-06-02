@@ -8,11 +8,9 @@ class HomeController extends Controller
 {
     public function home(Product $product){
       $category = Category::paginate(3);
-      $product_sale = Product::sale(2);
-      $product_new = Product::new(9)->chunk(3);
-
-      // dd($product_new);
-      return view('site.home',compact('category','product_sale', 'product_new','product'));
+      $product_sale = Product::sale(4);
+      $product_new = Product::new(24)->chunk(8);
+      return view('site.home-1',compact('category','product_sale', 'product_new','product'));
     }
     public function category(Category $category){
       $products = $category->products()->paginate(3);
@@ -44,9 +42,6 @@ class HomeController extends Controller
     public function shop(){
       return view('site.shop');
     }
-    public function cart(){
-      return view('site.cart');
-    }
     public function offers(){
       return view('site.offers');
     }
@@ -62,8 +57,5 @@ class HomeController extends Controller
     public function checkOut(){
       return view('site.check-out');
     }
-    // public function commingSoon(){
-    //   return view('site.comming-soon');
-    // }
 }
 ?>

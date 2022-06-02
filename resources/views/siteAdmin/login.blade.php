@@ -43,7 +43,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href=""><b>Admin</b>H</a>
+            <a href=""><b>Admin</b>Uray</a>
         </div>
 
         <div class="card">

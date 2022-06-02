@@ -70,3 +70,13 @@
   .fa-user{
       font-size: 20px;
   }
+.log_out{
+  display: none;
+}
+.login:hover .log_out{
+  display: none!important;
+}
+.qualityInput{
+  width: 30px;
+  text-align: center;
+}

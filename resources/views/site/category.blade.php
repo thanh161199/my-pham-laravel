@@ -85,43 +85,8 @@
                                             <div id="flex-slider" class="flexslider">
                                                 <ul class="slides">
                                                     <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
-                                                            alt="">
+                                                        <img src="{{url('uploads')}}/{{$product->image}}" alt="">
                                                     </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <!-- items mirrored twice, total of 12 -->
-                                                </ul>
-                                            </div>
-                                            <div id="flex-carousel" class="flexslider">
-                                                <ul class="slides">
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail1.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail2.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail3.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="{{url('file')}}/imager/product-detail/product_detail4.jpg"
-                                                            alt="">
-                                                    </li>
-                                                    <!-- items mirrored twice, total of 12 -->
                                                 </ul>
                                             </div>
                                         </div>
@@ -156,8 +121,7 @@
                                                 <button type="button" class="next btn ">+</button>
                                             </div>
                                             <div class="btn-group">
-                                                <a href="#" class="btn add-to-cart">ADD TO CART<p><i
-                                                            class="fas fa-cart-plus"></i></p> </a>
+                                                <a href="" class="btn add-to-cart">ADD TO CART<p><i class="fas fa-cart-plus"></i></p> </a>
                                             </div>
                                         </div>
                                     </div>

@@ -25,7 +25,6 @@
 </head>
 
 <body>
-
     <!--header-->
     <!--header desktop-->
     <div class="header">
@@ -46,44 +45,24 @@
                     <div>
                         <div class="menu">
                             <ul>
-                                <li><a href="{{route('home')}}" class="menu-active" style="color: red;">home</a>
+                                <li>
+                                    <a href="{{route('home')}}" class="menu-active" style="color: red;">Trang chủ</a>
                                 </li>
-                                <li><a href="{{route('about')}}">page</a>
+                                <li>
+                                    <a href="{{route('about')}}">Sản phẩm</a>
                                     <ul>
                                         @foreach($cats as $cat)
                                         <li><a href="{{route('home.category',$cat->id)}}">{{$cat->name}}</a></li>
                                         @endforeach
-                                        <!-- </ul>
-                                        <li><a href="{{route('about')}}">About Us</a></li>
-                                        <li><a href="{{route('offers')}}">What We Offer</a></li>
-                                        <li><a href="{{route('our-team')}}">Our Team</a></li>
-                                    </ul> -->
                                     </ul>
                                 </li>
-                                <li><a href="{{route('products')}}">shop</a>
+                                <li><a href="{{route('blogs')}}">Bài viết</a>
                                     <ul>
-                                        <li><a href="{{route('products')}}">Product List</a></li>
-                                        <li><a href="{{route('shop')}}">Layouts</a>
-                                            <span class="lnr lnr-chevron-right"></span>
-
-                                        </li>
-                                        <li><a href="{{route('cart')}}">Page</a><span class="lnr lnr-chevron-right"></span>
-                                            <ul>
-                                                <li><a href="{{route('my-account')}}">My Account</a></li>
-                                                <li><a href="{{route('cart')}}">Cart</a></li>
-                                                <li><a href="{{route('wish-list')}}">Wish List</a></li>
-                                                <li><a href="{{route('check-out')}}">Check Out</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('blogs')}}">blog</a>
-                                    <ul>
-                                        <li><a href="{{route('blog-masonry')}}">Masonry</a></li>
+                                        <li><a href="{{route('blog-masonry')}}">Kết hợp</a></li>
                                         <li><a href="{{route('blog-single')}}">Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('contact')}}">contact</a></li>
+                                <li><a href="{{route('contact')}}">Địa chỉ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -91,72 +70,77 @@
                         <div class="header-right">
                             <ul class="list-inline">
                                 <li>
-                                    <a href="#" class="cart-index">
+                                    <a href="{{route('home.cart')}}" class="cart-index">
                                         <img src="{{url('file')}}/imager/home/bag-2.png" alt=""
                                             style="width: 16px;height: 22px;margin-top: -10px;">
-                                        <div class="number-cart"> 2 </div>
+                                        <div class="number-cart">{{$totalQuantity}}</div>
                                     </a>
                                     <div class="widget_shopping_cart">
                                         <div class="widget_shopping_cart_content">
                                             <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                @foreach($carts as $cart)
                                                 <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                    <a class="product-image" href="#">
-                                                        <img src="{{url('file')}}/imager/home/cart-home1.jpg"
-                                                            alt="cart-1">
+                                                    <a class="product-image " href="#">
+                                                        <img style="height: 100px;width:100px;" src="{{url('uploads')}}/{{$cart->image}}" alt="cart-1">
                                                     </a>
-                                                    <a class="product-title" href="#">Skin recreation</a>
+                                                    <a class="product-title" href="#">{{$cart->name}}</a>
 
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        56
+                                                    <span class="woocommerce-Price-amount amount" >
+                                                        <span
+                                                            class="woocommerce-Price-currencySymbol" style="margin-left: 50px;">$</span>{{$cart->price}}</span>
+                                                    <span class="quantity" style="margin-left: 50px;">
+                                                        Số lượng: {{$cart->quantity}}
                                                     </span>
-                                                    <span class="quantity">
-                                                        Qty: 1
-                                                    </span>
-                                                    <a href="#" class="remove">
+                                                    <a href="{{ route('home.cart-remove', $cart->id)}}"
+                                                        class="product-remove" class="remove">
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
                                                 </li>
-                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                    <a class="product-image" href="#">
-                                                        <img src="{{url('file')}}/imager/home/cart-home2.jpg"
-                                                            alt="cart-2">
-                                                    </a>
-                                                    <a class="product-title" href="#">Face cream</a>
-
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        48
-                                                    </span>
-                                                    <span class="quantity">
-                                                        Qty: 2
-                                                    </span>
-                                                    <a href="#" class="remove">
-                                                        <span class="lnr lnr-cross"></span>
-                                                    </a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                             <p class="woocommerce-mini-cart__total total">
-                                                <span>Order Total:</span>
+                                                <span>Tổng tiền:</span>
                                                 <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>
-                                                    200
+                                                    <span
+                                                        class="woocommerce-Price-currencySymbol">$</span>{{$totalPrice}}
                                                 </span>
                                             </p>
                                             <p class="woocommerce-mini-cart__buttons buttons">
-                                                <a href="{{route('cart')}}"
-                                                    class="button wc-forward au-btn btn-small">VIEW CART & CHECKOUT</a>
+                                                <a href="{{route('home.cart')}}"
+                                                    class="button wc-forward au-btn btn-small">Giỏ hàng</a>
+                                                <a href="{{route('home.order_checkout')}}"
+                                                    class="button wc-forward au-btn btn-small">Thanh toán</a>
                                             </p>
                                         </div>
                                     </div>
-                                </li>
                                 <li>
                                     <a href="javascript:void(0)" class="search-header1">
                                         <img src="{{url('file')}}/imager/home/search-header.png" alt=""
                                             style="width: 20px;height: 20px;margin-top: -10px;"></a>
                                 </li>
-                                <li class="login"><a href="javascript:void(0);"><i class="fa fa-user"
-                                            style="font-size: 20px;"></i></a></li>
+                                <li class="login">
+                                    <a href="{{route('home.login')}}"><i class="fa fa-user"
+                                            style="font-size: 20px;"></i></a>
+                                    <div class="widget_shopping_cart" style="margin-right: -100px;width: 150px;">
+                                        <div class="widget_shopping_cart_content">
+                                            <p class="woocommerce-mini-cart__buttons buttons" >
+                                                <ul>
+                                                    @if(auth()->guard('account')->check())
+                                                    <li><a class="button_1" href="">Hồ sơ</a></li>
+                                                    <li><a class="button_1" href="{{route('home.order')}}">Đơn đã đặt</a></li>
+                                                    <li><a class="button_1" href="{{route('home.order_checkout')}}">Thanh toán</a></li>
+                                                    <li><a class="button_1" href="{{route('home.logout')}}">Đăng xuất</a></li>
+                                                    @else
+                                                    <li><a class="button_1" href="{{route('home.login')}}">Đăng nhập</a></li>
+                                                    <li><a class="button_1" href="{{route('home.register')}}">Đăng kí</a></li>
+                                                    @endif
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -195,17 +179,16 @@
                                     <div class="widget_shopping_cart">
                                         <div class="widget_shopping_cart_content">
                                             <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                @foreach($carts as $cart)
                                                 <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
                                                     <a class="product-image" href="#">
-                                                        <img src="{{url('file')}}/imager/home/cart-home1.jpg"
-                                                            alt="cart-1">
+                                                        <img src="{{url('uploads')}}/{{$cart->image}}" alt="cart-1">
                                                     </a>
-                                                    <a class="product-title" href="#">Skin recreation</a>
+                                                    <a class="product-title" href="#">{{$cart->name}}</a>
 
                                                     <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        56
-                                                    </span>
+                                                        <span
+                                                            class="woocommerce-Price-currencySymbol">$</span>{{$cart->price}}</span>
                                                     <span class="quantity">
                                                         Qty: 1
                                                     </span>
@@ -213,24 +196,7 @@
                                                         <span class="lnr lnr-cross"></span>
                                                     </a>
                                                 </li>
-                                                <li class="woocommerce-mini-cart-item mini_cart_item clearfix">
-                                                    <a class="product-image" href="#">
-                                                        <img src="{{url('file')}}/imager/home/cart-home2.jpg"
-                                                            alt="cart-2">
-                                                    </a>
-                                                    <a class="product-title" href="#">Face cream</a>
-
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol">$</span>
-                                                        48
-                                                    </span>
-                                                    <span class="quantity">
-                                                        Qty: 2
-                                                    </span>
-                                                    <a href="#" class="remove">
-                                                        <span class="lnr lnr-cross"></span>
-                                                    </a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                             <p class="woocommerce-mini-cart__total total">
                                                 <span>Order Total:</span>
@@ -240,7 +206,8 @@
                                                 </span>
                                             </p>
                                             <p class="woocommerce-mini-cart__buttons buttons">
-                                                <a href="#" class="button wc-forward au-btn btn-small">VIEW CART &
+                                                <a href="{{route('home.cart')}}"
+                                                    class="button wc-forward au-btn btn-small">VIEW CART &
                                                     CHECKOUT</a>
                                             </p>
                                         </div>
@@ -259,50 +226,42 @@
                     </div>
                 </div>
             </div>
-         
+
             <div class="menu-mobile">
                 <ul>
-                    <li><a href="{{route('home')}}" class="menu-active">home</a><span
-                            class="lnr lnr-chevron-down drop-link"></span>
+                    <li><a href="{{route('home')}}" class="menu-active">Trang chủ</a>
                     </li>
                     <li><a href="{{route('about')}}">page</a><span class="lnr lnr-chevron-down drop-link"></span>
                         <ul class="drop-menu">
-                            <li><a href="{{route('about')}}">About Us</a></li>
-                            <li><a href="{{route('offers')}}">What We Offer</a></li>
-                            <li><a href="{{route('our-team')}}">Our Team</a></li>
-                        </ul>
+                            <li>@foreach($cats as $cat)
+                            <li><a href="{{route('home.category',$cat->id)}}">{{$cat->name}}</a></li>
+                            @endforeach
                     </li>
-                    <li><a href="{{route('products')}}">shop</a><span class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="{{route('products')}}">Product List</a></li>
-                            <li><a href="{{route('shop')}}">Layouts</a><span
-                                    class="lnr lnr-chevron-down drop-link"></span>
-    
-                            </li>
-                            <li><a href="cart.html">Shop Page</a><span class="lnr lnr-chevron-down drop-link"></span>
-                                <ul class="drop-menu">
-                                    <li><a href="{{route('my-account')}}">My Account</a></li>
-                                    <li><a href="{{route('cart')}}">Cart</a></li>
-                                    <li><a href="{{route('wish-list')}}">Wish List</a></li>
-                                    <li><a href="{{route('check-out')}}">Check Out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route('blog-single')}}">blog</a><span class="lnr lnr-chevron-down drop-link"></span>
-                        <ul class="drop-menu">
-                            <li><a href="{{route('blog-masonry')}}">Masonry</a></li>
-                            <!-- <li><a href="blog-standard-right-siderbar.html">Standard</a><span class="lnr lnr-chevron-down drop-link"></span>
-                <ul class="drop-menu">
-                  <li><a href="blog-standard-right-siderbar.html">Right Sidebar</a></li>
-                  <li><a href="blog-standard-left-siderbar.html">Left Sidebar</a></li>
-                  <li><a href="blog-standard-no-sliderbar.html">No Sidebar</a></li>
                 </ul>
-              </li> -->
-                            <li><a href="{{route('blog-single')}}">Single</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{route('contact')}}">contact</a></li>
+                </li>
+                <li><a href="{{route('products')}}">shop</a><span class="lnr lnr-chevron-down drop-link"></span>
+                    <ul class="drop-menu">
+                        <li><a href="{{route('products')}}">Product List</a></li>
+                        <li><a href="{{route('shop')}}">Layouts</a><span class="lnr lnr-chevron-down drop-link"></span>
+
+                        </li>
+                        <li><a href="">Shop Page</a><span class="lnr lnr-chevron-down drop-link"></span>
+                            <ul class="drop-menu">
+                                <li><a href="{{route('my-account')}}">My Account</a></li>
+                                <li><a href="{{route('home.cart')}}">Cart</a></li>
+                                <li><a href="{{route('wish-list')}}">Wish List</a></li>
+                                <li><a href="{{route('check-out')}}">Check Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="{{route('blog-single')}}">blog</a><span class="lnr lnr-chevron-down drop-link"></span>
+                    <ul class="drop-menu">
+                        <li><a href="{{route('blog-masonry')}}">Masonry</a></li>
+                        <li><a href="{{route('blog-single')}}">Single</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{route('contact')}}">contact</a></li>
                 </ul>
             </div>
         </div>
@@ -320,7 +279,7 @@
                 <div class="col-md-3 col-sm-6 col-12">
                     <img src="{{url('file')}}/imager/home/Logo.png" alt="">
                     <ul class="list-inline">
-                        <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</li>
+                        <li>Vì không ai từ chối niềm vui bởi vì nó là niềm vui</li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="fab fa-facebook"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -330,11 +289,11 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="content-footer">
-                        <h2>Locate Us</h2>
+                        <h2>Vị trí cửa hàng</h2>
                         <ul class="list-inline">
-                            <li>No 40 Baria sreet 133/2</li>
-                            <li>+ (156) 1800-366-6666</li>
-                            <li>Eric-82@example.com</li>
+                            <li>Số 40 Bắc Từ Liêm - Hà Nội</li>
+                            <li>(84) 123 7890</li>
+                            <li> lienheadmin@gmail.com</li>
                             <li>www.uray.com</li>
                         </ul>
                     </div>
@@ -342,23 +301,23 @@
                 </div>
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="content-footer">
-                        <h2>Profile</h2>
+                        <h2>Hồ sơ</h2>
                         <ul class="list-inline">
-                            <li><a href="my-account.html">My account</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="#">Order Tracking</a></li>
-                            <li><a href="#">Help & Support</a></li>
+                            <li><a href="{{route('home.login')}}">Tài khoản của bạn</a></li>
+                            <li><a href="{{route('home.order_checkout')}}">Thủ tục thanh toán</a></li>
+                            <li><a href="{{route('home.order')}}">Theo dõi đơn hàng</a></li>
+                            <li><a href="#">Trợ giúp & Hỗ trợ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-12 ">
-                    <h2>Newsletter</h2>
+                    <h2>Bản tin</h2>
                     <ul class="list-inline">
-                        <li>Subscribe to our newsletter</li>
+                        <li>Theo dõi bản tin của chúng tôi</li>
                         <li><input type="text" placeholder="Email">
                             <button> ></button>
                         </li>
-                        <li>@2019 Uray.Get The Theme</li>
+                        <li>@2022 Uray. Chủ đề</li>
                     </ul>
                 </div>
             </div>
@@ -366,7 +325,9 @@
     </div>
     <!--end footer-->
     <script type="text/javascript" src="{{url('file')}}/asset/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{{url('file')}}/asset/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{{url('file')}}/asset/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{url('file')}}/asset/js/bootstrap1.min.js"></script>
     <script type="text/javascript" src="{{url('file')}}/asset/js/jquery.flexslider-min.js"></script>
     <script src="{{url('file')}}/asset/js/owl.carousel.js"></script>
     <script type="text/javascript" src="{{url('file')}}/asset/js/custom.js"></script>

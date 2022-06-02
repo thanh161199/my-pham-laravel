@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $cats = Category::orderBy('name', 'ASC')->get();
-        $data = Product::search()->paginate(20);
+        $data = Product::search()->paginate(5);
         return view('siteAdmin.product.index', compact('data','cats'));
     }
 
@@ -34,8 +34,6 @@ class ProductController extends Controller
         $cats = Category::orderBy('name', 'ASC')->get();
         return view('siteAdmin.product.create', compact('cats'));
     }
-    
-
     /**
      * Store a newly created resource in storage.
      *

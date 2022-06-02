@@ -133,7 +133,7 @@
         padding: 20px 0;
         width: 80%;
         margin: auto;
-        text-align: left;
+        text-align: center;
         border-bottom: 1px solid #99999952;
         position: relative; }
         .widget_shopping_cart .widget_shopping_cart_content ul li .remove {
@@ -175,6 +175,14 @@
     padding: 15px 30px;
     font-size: 15px; }
   .widget_shopping_cart .button:hover {
+    background: #333333;
+    color: white; }
+  .widget_shopping_cart .button_1 {
+    font-family: 'Raleway', sans-serif;
+    padding: 15px 20px;
+    color: blue;
+    font-size: 15px; }
+  .widget_shopping_cart .button_1:hover {
     background: #333333;
     color: white; }
 

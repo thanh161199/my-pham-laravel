@@ -525,7 +525,7 @@
                         <button type="button" class="next btn ">+</button>
                       </div>
                       <div class="btn-group">
-                        <a href="#" class="btn add-to-cart">ADD TO CART<p><i class="fas fa-cart-plus"></i></p> </a>
+                        <a href="" class="btn add-to-cart">ADD TO CART<p><i class="fas fa-cart-plus"></i></p> </a>
                       </div>
                     </div>
                   </div>

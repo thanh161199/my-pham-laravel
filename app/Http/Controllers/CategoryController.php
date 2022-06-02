@@ -14,7 +14,6 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::search()->paginate(5);
-
         // dd($search_val);
         return view('siteAdmin.category.index', compact('data'));
     }

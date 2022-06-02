@@ -28,8 +28,6 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('*',function($view)
         {
-            // $cats = Category::orderBy('name', 'ASC')->get();
-            // $view->with(compact('cats'));\
             $totalQuantity = 0;
             $totalPrice = 0;
             $cats  = Category::orderBy('name','ASC')->get();

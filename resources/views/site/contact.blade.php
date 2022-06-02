@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title', 'Contact page')
+@section('title', 'Địa chỉ cửa hàng')
 @section('main')
 
 <!--content contact us-->
@@ -11,7 +11,7 @@
         <div class="content-contact-us">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Contact Us</h1>
+                    <h1>Liên hệ chúng tôi</h1>
 
                 </div>
             </div>
@@ -21,26 +21,24 @@
                         <div class="col-md-6">
                             <ul class="list-inline">
                                 <li>
-                                    <p>NewYork</p>
+                                    <p>Hà Nội</p>
                                 </li>
-                                <li>No 40 Baria Sreet 133/2
-                                    NewYork 13589
+                                <li>Số 40 Bắc Từ Liêm - Hà Nội
                                 </li>
-                                <li>Email: kathryn-92@example.com
-                                    Phone: (849) 490 4283
+                                <li>Email: lienheadmin@gmail.com
+                                    Phone: (84) 123 7890
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-inline">
                                 <li>
-                                    <p>Barcelona</p>
+                                    <p>Nam Định</p>
                                 </li>
-                                <li>184 Main Collins Street West 8007
-                                    Barselona 23765
+                                <li>184 Quất Lâm - Nam Định
                                 </li>
-                                <li>Email: steven82@example.com
-                                    Phone: (527) 376 6381
+                                <li>Email: lienheadmin1@gmail.com
+                                    Phone: (527) 456 1230
                                 </li>
                             </ul>
                         </div>
@@ -54,10 +52,10 @@
                     <form action="#" method="post">
                         <textarea placeholder="Message"></textarea>
                         <div class="row">
-                            <div class="col-md-6"><input type="text" placeholder="Your Name"></div>
-                            <div class="col-md-6"><input type="text" placeholder="Your Mail"></div>
+                            <div class="col-md-6"><input type="text" placeholder="Tên của bạn"></div>
+                            <div class="col-md-6"><input type="text" placeholder="email của bạn"></div>
                         </div>
-                        <button type="submit">SUBMIT</button>
+                        <button type="submit"">GỬI</button>
                     </form>
                 </div>
             </div>
